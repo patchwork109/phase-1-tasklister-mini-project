@@ -14,8 +14,16 @@ const taskList = document.querySelector('#tasks');
 // Declare + grab the form
 const taskForm = document.querySelector('#create-task-form');
 
-// Declare + grab the submit button
-const button = document.querySelector('#button');
+// // Create new delete button element 
+// const deleteButton = document.createElement('button');
+
+// // Name the button text "X"
+// deleteButton.innerText = 'X';
+
+
+
+// Add an event listener for the submit button
+taskForm.addEventListener('submit', addTaskToList);
 
 
 
@@ -24,14 +32,26 @@ const button = document.querySelector('#button');
 function addTaskToList (event) {
   event.preventDefault();
   // Declare and create a list of tasks within the ul
-  const taskListElement = document.createElement('li');
+    const taskListElement = document.createElement('li');
   // Declare the newTask by grabbing the content of the task input field
-  const newTask = event.target['new-task-description'].value;
+    const newTask = event.target['new-task-description'].value;
   // The text of my list item (taskListElement) should be the content from newTask
-  taskListElement.innerText = newTask;
+    taskListElement.innerText = newTask;
   // Append the list of tasks to the ul (taskList)
-  taskList.append(taskListElement);
+    taskList.append(taskListElement);
+
+  // Create new delete button element 
+    const deleteButton = document.createElement('button');
+  // Name the button text "X"
+    deleteButton.innerText = 'X';
+  // Append the button onto the list item (taskListElement)
+    taskListElement.append(deleteButton);
+  // Add an event listener for when the delete button is clicked
+    deleteButton.addEventListener('click', deleteTaskFromList);
 }
 
-// Add an event listener for the submit button
-taskForm.addEventListener('submit', addTaskToList);
+
+// Remove the li (taskListElement) when button is clicked
+function deleteTaskFromList (event) {
+  event.target.parentElement.remove();
+}
