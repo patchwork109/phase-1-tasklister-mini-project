@@ -14,17 +14,8 @@ const taskList = document.querySelector('#tasks');
 // Declare + grab the form
 const taskForm = document.querySelector('#create-task-form');
 
-// // Create new delete button element 
-// const deleteButton = document.createElement('button');
-
-// // Name the button text "X"
-// deleteButton.innerText = 'X';
-
-
-
 // Add an event listener for the submit button
 taskForm.addEventListener('submit', addTaskToList);
-
 
 
 // When the form has been submitted, take the input (newTask) and create
